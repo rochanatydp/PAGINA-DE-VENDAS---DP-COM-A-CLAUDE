@@ -165,7 +165,7 @@
 
   /* ── MÓDULOS ── */
   .modules-section { background: var(--preto); }
-  .modules-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
+  .modules-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; width: 100%; min-width: 0; }
   .module-card {
     background: var(--cinza-escuro); border: 1px solid rgba(255,255,255,0.06);
     border-radius: 16px; padding: 1.75rem; transition: border-color 0.2s;
@@ -344,8 +344,17 @@
     .hero-img { width: 240px; height: 300px; }
     .hero-badge { right: 0; }
     section { padding: 4rem 1.5rem; }
-    .modules-layout { grid-template-columns: 1fr; }
-    .module-card.destaque { grid-column: span 1; }
+    .modules-layout {
+      grid-template-columns: 1fr;
+      width: 100%;
+    }
+    .module-card,
+    .module-card.destaque,
+    .module-card[style*="grid-column"] {
+      grid-column: span 1 !important;
+      width: 100%;
+      min-width: 0;
+    }
     .author-layout { grid-template-columns: 1fr; gap: 3rem; }
     .author-img-frame { max-width: 280px; margin: 0 auto; }
     .price-layout { grid-template-columns: 1fr; }
